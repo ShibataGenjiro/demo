@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>北京话生成器</h1>
+    <input type="text" placeholder="请输入要转换的话">
+    <button>转换</button>
+    <h3>转换结果：</h3>
+    <div class="result"></div>
+
+    <script>
+        var input = document.querySelector('input');
+        var btn = document.querySelector('button');
+        var result = document.querySelector('.result');
+        btn.addEventListener('click', function() {
+            var str = input.value;
+
+            function isChn(str) {
+                var reg = /^[\u4E00-\u9FA5]+$/;
+                if (!reg.test(str)) {
+                    return false;
+                }
+                return true;
+            };
+
+            if (isChn(str)) {
+                var n = str.replace("你", "您");
+                var res = n.split('');
+                var sum = '';
+                for (var i = 0; i < res.length; i++) {
+                    sum += res[i] + '儿';
+                }
+                result.innerHTML = sum;
+            } else {
+                result.innerHTML = '咱儿老儿百儿京儿说儿话儿不儿带儿洋儿文儿的儿';
+            }
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>
